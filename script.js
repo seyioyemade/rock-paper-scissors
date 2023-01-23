@@ -2,7 +2,6 @@ let options = ['ROCK','PAPER','SCISSORS']
 
 let userScore = 0;
 let computerScore = 0;
-let total = 0;
 
 let computerChoice;
 
@@ -111,7 +110,6 @@ function playRound(playerSelection, computerSelection) {
     result = "You Lose! Paper beats Rock"
     
     computerScore++;
-    total++;
 
 
   }else if((playerSelection === 'ROCK') && (computerSelection === 'SCISSORS')){
@@ -119,7 +117,6 @@ function playRound(playerSelection, computerSelection) {
     result = "You Win! Rock beats Scissors"
 
     userScore++;
-    total++;
 
 
   }else if((playerSelection === 'ROCK') && (computerSelection === 'ROCK')){
@@ -137,15 +134,13 @@ function playRound(playerSelection, computerSelection) {
     result = "You Win! Paper beats Rock"
 
     userScore++
-    total++;
 
   }else if((playerSelection === 'PAPER') && (computerSelection === 'SCISSORS')){
     
     result = "You Lose! Scissors beats Paper"
 
     computerScore++
-    total++;
-
+   
   }else if((playerSelection === 'SCISSORS') && (computerSelection === 'SCISSORS')){
     
     result = "A Tie! Please play again"
@@ -155,14 +150,12 @@ function playRound(playerSelection, computerSelection) {
     result = "You Lose! Rock beats Scissors"
 
     computerScore++
-    total++;
 
   }else if((playerSelection === 'SCISSORS') && (computerSelection === 'PAPER')){
     
     result = "You Win! Scissors beats Paper"
 
     userScore++;
-    total++;
 
   }else{
 
