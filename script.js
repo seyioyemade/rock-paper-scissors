@@ -8,7 +8,21 @@ let computerChoice;
 
 let userChoice;
 
+let result;
+
 let finalResult;
+
+let counter = 0;
+
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const divResult = document.querySelector(".result");
+
+let buttons = document.querySelectorAll("button");
+
+console.log(buttons)
 
 
 function getComputerChoice() {
@@ -21,10 +35,76 @@ function getComputerChoice() {
 }
 
 
+function game() {
+
+ 
+  for (let i = 0; i < buttons.length; i++) {
+
+    buttons[i].addEventListener('click', function() {
+
+      if (counter < 5){
+
+        if (i === 0){
+
+          userChoice = 'ROCK'
+          computerChoice = getComputerChoice();
+
+          divResult.textContent = playRound(userChoice, computerChoice)
+
+        }else if(i === 1){
+
+          userChoice = 'PAPER';
+          computerChoice = getComputerChoice();
+
+          divResult.textContent = playRound(userChoice, computerChoice)
+      
+        }else if(i === 2){
+
+          userChoice = 'SCISSORS';
+          computerChoice = getComputerChoice();
+          
+          divResult.textContent = playRound(userChoice, computerChoice)
+
+        }
+
+        counter++;
+
+      }else {
+
+        if(userScore > computerScore){
+
+          finalResult = "Final Result: Congratulations! You win" 
+        
+          }else if(userScore < computerScore){
+            finalResult = "Final Result: Sorry! You lose" 
+        
+          }else{
+            finalResult = "Final Result: Tie! "
+          }
+        
+          divResult.textContent = finalResult;
+         
+
+        buttons[i].removeEventListener('click', arguments.callee);
+
+        
+
+        
+      }
+
+
+      // console.log('Button clicked');
+    });
+  }
+}
+
+game()
+
+
+
 function playRound(playerSelection, computerSelection) {
   // your code here!
 
-  let result = "";
 
   if ((playerSelection === 'ROCK') && (computerSelection === 'PAPER')){
 
@@ -95,44 +175,5 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-
-
-function game() {
-
-  for (let i = 0; i < 5; i++){
-
-    computerChoice = getComputerChoice();
-
-    // console.log(computerChoice);
-    
-    userChoice = (window.prompt("Please enter your choice")).toUpperCase()
-
-    console.log(playRound(userChoice, computerChoice))
-
-    // window.location.reload();
-
-    // setTimeout(function(){
-    //   window.location.reload();
-    // }, 8000);
-    
-  }
-
-}
-
-game()
-
-
-
-if(userScore > computerScore){
-  finalResult = "Final Result: Congratulations! You win " + userScore + "/" + total;
-
-}else if(userScore < computerScore){
-  finalResult = "Final Result: Sorry! You lose " + userScore + "/" + total;
-
-}else{
-  finalResult = "Final Result: Tie! " + userScore + "/" + total;
-}
-
-console.log(finalResult);
 
 
